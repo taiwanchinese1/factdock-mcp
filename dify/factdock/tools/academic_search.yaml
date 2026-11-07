@@ -1,0 +1,65 @@
+identity:
+  name: academic_search
+  author: factdock
+  label:
+    en_US: Academic paper search
+description:
+  human:
+    en_US: Search scholarly databases, ranked by evidence tier. The top 10 results come with translated titles and summaries. Uses API credits.
+  llm: Searches scholarly literature across academic databases ranked by evidence tier; the top 10 results include translated titles and summaries, the rest are returned as published.
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Search keywords
+    human_description:
+      en_US: Search keywords (English works best).
+    llm_description: Search keywords for the literature search; English works best.
+  - name: purpose
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Purpose
+    human_description:
+      en_US: Optional - what you want to find out.
+    llm_description: Optional description of what the user wants to find out.
+  - name: max_results
+    type: select
+    required: false
+    default: "60"
+    form: form
+    label:
+      en_US: Number of results
+    human_description:
+      en_US: How many papers to return.
+    options:
+      - value: "30"
+        label:
+          en_US: "30"
+      - value: "60"
+        label:
+          en_US: "60"
+  - name: exclude_terms
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: Exclude words
+    human_description:
+      en_US: Optional comma-separated words to exclude.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for translated titles and summaries (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/academic_search.py

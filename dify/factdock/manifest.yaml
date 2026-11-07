@@ -1,0 +1,32 @@
+version: 0.0.1
+type: plugin
+author: factdock
+name: factdock
+label:
+  en_US: Factdock
+description:
+  en_US: Multilingual search engine for primary sources. Search each country's official sites, academic papers, patents, company and trade information in their own language, with source URLs and dates.
+icon: icon.png
+resource:
+  memory: 1048576
+  permission:
+    tool:
+      enabled: true
+plugins:
+  tools:
+    - provider/factdock.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+created_at: "2026-11-08T00:00:00.000000000Z"
+privacy: PRIVACY.md
+tags:
+  - search
+  - business
+  - finance

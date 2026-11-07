@@ -98,6 +98,10 @@ Sign in with your Factdock account when the browser opens.
 
 Settings → Extensions → Add custom extension → Remote extension (Streamable HTTP), URL `https://fact-dock.com/mcp`.
 
+### Dify
+
+A Dify tool plugin is in [dify/factdock](dify/factdock). It connects to the Factdock Business API (`https://data.fact-dock.com`) with a Business API key and offers country web search, academic, patent, company, trade, infrastructure, finance and Insights tools.
+
 ### Other MCP clients
 
 Any client that supports remote MCP servers over Streamable HTTP can use `https://fact-dock.com/mcp` with OAuth sign-in or a personal API key header.

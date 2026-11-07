@@ -1,0 +1,35 @@
+identity:
+  author: factdock
+  name: factdock
+  label:
+    en_US: Factdock
+  description:
+    en_US: Multilingual search engine for primary sources. Each country's official sites, academic papers, patents, company and trade information, searched in their own language and returned with source URLs and dates.
+  icon: icon.png
+  tags:
+    - search
+    - business
+    - finance
+credentials_for_provider:
+  factdock_api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: Factdock Business API key
+    placeholder:
+      en_US: Paste your Factdock Business API key
+    help:
+      en_US: Create a key on the Factdock for Developers page. Search tools need a Platform key; Insights search also works with an Insights key.
+    url: https://fact-dock.com/en/product/business-api/
+tools:
+  - tools/web_search.yaml
+  - tools/academic_search.yaml
+  - tools/patent_search.yaml
+  - tools/company_report.yaml
+  - tools/trade_compliance_check.yaml
+  - tools/gov_infra_search.yaml
+  - tools/finance_search.yaml
+  - tools/insights_search.yaml
+extra:
+  python:
+    source: provider/factdock.py

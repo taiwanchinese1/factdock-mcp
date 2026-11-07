@@ -1,0 +1,76 @@
+identity:
+  name: insights_search
+  author: factdock
+  label:
+    en_US: Insights news search
+description:
+  human:
+    en_US: Search Factdock Global Insights - official and industry news collected from primary sources, with summaries in your language. Uses API credits.
+  llm: Searches Factdock Global Insights, a feed of official and industry news from primary sources, optionally filtered by country and category, with summaries in the requested language.
+parameters:
+  - name: track
+    type: select
+    required: false
+    default: official
+    form: form
+    label:
+      en_US: Feed
+    human_description:
+      en_US: Official and regulatory news, or company and pipeline news.
+    options:
+      - value: official
+        label:
+          en_US: Official and regulatory
+      - value: pipeline
+        label:
+          en_US: Companies and pipeline
+  - name: query
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Keywords
+    human_description:
+      en_US: Optional keywords (used with an Insights API key; a Platform key returns the latest feed).
+    llm_description: Optional search keywords.
+  - name: country
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Country code
+    human_description:
+      en_US: Optional ISO 3166-1 alpha-2 code.
+    llm_description: Optional ISO 3166-1 alpha-2 country code.
+  - name: category
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: Category
+    human_description:
+      en_US: 'Optional category, e.g. medical, veterinary, food, science, cyber, energy, ip, trade, economy, approvals, safety.'
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Number of results
+    human_description:
+      en_US: 1 to 20.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for titles and summaries (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/insights_search.py

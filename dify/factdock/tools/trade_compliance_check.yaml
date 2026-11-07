@@ -1,0 +1,130 @@
+identity:
+  name: trade_compliance_check
+  author: factdock
+  label:
+    en_US: Trade and compliance check
+description:
+  human:
+    en_US: Mode trade - tariffs, regulations, documents and certifications to import a product into a country. Mode screening - sanctions and denied-party screening of a company. Uses API credits.
+  llm: mode=trade returns tariffs, regulations, documents and certifications for importing a product (name or HS code) into dest_country; mode=screening screens a company against sanctions and denied-party lists. Countries must come from the user.
+parameters:
+  - name: mode
+    type: select
+    required: true
+    default: trade
+    form: llm
+    label:
+      en_US: Mode
+    human_description:
+      en_US: trade (import rules for a product) or screening (sanctions check of a company).
+    llm_description: trade or screening.
+    options:
+      - value: trade
+        label:
+          en_US: Trade (import rules)
+      - value: screening
+        label:
+          en_US: Screening (sanctions)
+  - name: product
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Product
+    human_description:
+      en_US: Product name (trade mode).
+    llm_description: Product name, for mode=trade.
+  - name: hs_code
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: HS code
+    human_description:
+      en_US: HS code, if known (trade mode).
+    llm_description: HS code, for mode=trade.
+  - name: origin_country
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Origin country
+    human_description:
+      en_US: Country of origin in English (trade mode).
+    llm_description: Origin country name in English.
+  - name: origin_code
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Origin country code
+    human_description:
+      en_US: ISO 3166-1 alpha-2 code of the origin country.
+    llm_description: ISO 3166-1 alpha-2 code of the origin country.
+  - name: dest_country
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Destination country
+    human_description:
+      en_US: Importing country in English (required for trade mode).
+    llm_description: Destination (importing) country name in English; required for mode=trade.
+  - name: dest_code
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Destination country code
+    human_description:
+      en_US: ISO 3166-1 alpha-2 code of the destination country.
+    llm_description: ISO 3166-1 alpha-2 code of the destination country.
+  - name: company
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Company
+    human_description:
+      en_US: Company name (screening mode).
+    llm_description: Company name, for mode=screening.
+  - name: company_url
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Company website
+    human_description:
+      en_US: Company website (screening mode, optional).
+    llm_description: Company website URL, for mode=screening.
+  - name: company_country
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Company country
+    human_description:
+      en_US: Company's country in English (screening mode).
+    llm_description: Company's country name in English.
+  - name: company_code
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Company country code
+    human_description:
+      en_US: ISO 3166-1 alpha-2 code of the company's country.
+    llm_description: ISO 3166-1 alpha-2 code of the company's country.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for the results (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/trade_compliance_check.py

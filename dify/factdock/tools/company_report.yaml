@@ -1,0 +1,93 @@
+identity:
+  name: company_report
+  author: factdock
+  label:
+    en_US: Company risk report
+description:
+  human:
+    en_US: Company due-diligence report from official and public sources - basic facts, structure, legal, misconduct and reputation, with sources and an overall risk level. One flat price per report (API credits).
+  llm: Builds a company due-diligence report (basic facts, structure, legal, misconduct, reputation, sources and an overall risk level) for one named company in one country. The country must come from the user.
+parameters:
+  - name: name
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Company name
+    human_description:
+      en_US: Company name.
+    llm_description: The company's name.
+  - name: country
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country (English name)
+    human_description:
+      en_US: Country where the company is registered, in English (e.g. Germany).
+    llm_description: Country name in English.
+  - name: country_code
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country code
+    human_description:
+      en_US: ISO 3166-1 alpha-2 code (e.g. DE).
+    llm_description: ISO 3166-1 alpha-2 code of the country.
+  - name: url
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Website
+    human_description:
+      en_US: Optional company website to identify it precisely.
+    llm_description: Optional company website URL.
+  - name: location
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: City or address
+    human_description:
+      en_US: Optional city or address.
+    llm_description: Optional city or address.
+  - name: scope
+    type: select
+    required: false
+    default: domestic
+    form: form
+    label:
+      en_US: Scope
+    human_description:
+      en_US: Domestic sources only, or global sources too.
+    options:
+      - value: domestic
+        label:
+          en_US: Domestic
+      - value: global
+        label:
+          en_US: Global
+  - name: include_governance
+    type: boolean
+    required: false
+    default: false
+    form: form
+    label:
+      en_US: Officers and ownership
+    human_description:
+      en_US: Also look up officers and ownership.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for the report (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/company_report.py

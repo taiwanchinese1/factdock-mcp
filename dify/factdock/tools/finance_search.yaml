@@ -1,0 +1,50 @@
+identity:
+  name: finance_search
+  author: factdock
+  label:
+    en_US: Country finance indicators
+description:
+  human:
+    en_US: Official macro and market indicators with sources for 1-3 countries (charged per country, API credits).
+  llm: Returns official macroeconomic and market indicators with sources for up to 3 countries. Countries must come from the user.
+parameters:
+  - name: country_codes
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country codes
+    human_description:
+      en_US: Comma-separated ISO codes, up to 3 (e.g. JP, DE).
+    llm_description: Comma-separated ISO 3166-1 alpha-2 codes, up to 3.
+  - name: country_names
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country names (English)
+    human_description:
+      en_US: The same countries in English, in the same order (e.g. Japan, Germany).
+    llm_description: Comma-separated English country names, in the same order as country_codes.
+  - name: categories
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Indicators
+    human_description:
+      en_US: 'Comma-separated: gdp, inflation, employment, policy_rate, fx, rating, ipo, index, political, sanctions, capital, env_reg. Default: gdp, inflation, policy_rate, fx.'
+    llm_description: 'Comma-separated indicator categories from: gdp, inflation, employment, policy_rate, fx, rating, ipo, index, political, sanctions, capital, env_reg.'
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for the results (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/finance_search.py

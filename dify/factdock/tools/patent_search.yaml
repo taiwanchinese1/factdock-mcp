@@ -1,0 +1,68 @@
+identity:
+  name: patent_search
+  author: factdock
+  label:
+    en_US: Patent search
+description:
+  human:
+    en_US: Search patents at one patent office, or at the 5 major offices together. Factdock builds the search queries from your description. One flat price per search (API credits).
+  llm: Searches patent publications at ONE patent office (e.g. JP) or at the 5 major offices together (major5 = US, JP, CN, KR, EP). Country tags come from the publication number. The office must come from the user.
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Invention or technology
+    human_description:
+      en_US: Description of the invention or technology.
+    llm_description: Description of the invention or technology to search for.
+  - name: offices
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Patent office
+    human_description:
+      en_US: One office code (e.g. JP, US, EP, CN, KR, WO), or major5 for US, JP, CN, KR and EP together.
+    llm_description: One office code such as JP, US, EP, CN, KR or WO, or the word major5 for the 5 major offices together.
+  - name: period
+    type: select
+    required: false
+    default: wide
+    form: form
+    label:
+      en_US: Period
+    human_description:
+      en_US: How far back to search.
+    options:
+      - value: recent
+        label:
+          en_US: Recent
+      - value: mid
+        label:
+          en_US: Medium
+      - value: wide
+        label:
+          en_US: Wide
+  - name: cpc
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: CPC class
+    human_description:
+      en_US: Optional CPC classification to narrow the search.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for translated results (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/patent_search.py

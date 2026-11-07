@@ -1,0 +1,102 @@
+identity:
+  name: web_search
+  author: factdock
+  label:
+    en_US: Country web search
+description:
+  human:
+    en_US: Search one country (in that country's own language) or one language sphere, with source tiers and translated titles and summaries. Uses API credits.
+  llm: Searches the web of ONE country in its own language (zone cc_XX) or ONE language sphere, and returns original sources with URLs, dates and translated titles and summaries. The country must come from the user; do not guess it from the query or the user's language.
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Query
+    human_description:
+      en_US: What you want to find, in natural language.
+    llm_description: The question or topic in natural language.
+  - name: zone
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country or language sphere
+    human_description:
+      en_US: '"cc_" + ISO country code (e.g. cc_JP, cc_DE, cc_BR), or a language sphere: en_global, zh-CN, zh-TW, es, pt, fr, ar.'
+    llm_description: '"cc_" + ISO 3166-1 alpha-2 for one country (e.g. cc_JP), or one of en_global, zh-CN, zh-TW, es, pt, fr, ar. "worldwide" is not available.'
+  - name: intent
+    type: select
+    required: false
+    default: local_voice
+    form: form
+    label:
+      en_US: Source type
+    human_description:
+      en_US: Which kind of sources to prefer.
+    options:
+      - value: official
+        label:
+          en_US: Official (government, regulators)
+      - value: commercial
+        label:
+          en_US: Commercial (companies, prices)
+      - value: local_voice
+        label:
+          en_US: Local voices (news, communities)
+      - value: academic
+        label:
+          en_US: Academic
+  - name: time_range
+    type: select
+    required: false
+    default: any
+    form: form
+    label:
+      en_US: Time range
+    human_description:
+      en_US: Limit results by publication date.
+    options:
+      - value: any
+        label:
+          en_US: Any time
+      - value: year
+        label:
+          en_US: Past year
+      - value: month
+        label:
+          en_US: Past month
+      - value: week
+        label:
+          en_US: Past week
+  - name: keywords
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Keywords
+    human_description:
+      en_US: Optional comma-separated search keywords (up to 8). If empty, Factdock builds them from the query.
+    llm_description: Optional comma-separated search keywords, up to 8.
+  - name: exclude_terms
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: Exclude words
+    human_description:
+      en_US: Optional comma-separated words to exclude.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for translated titles and summaries (BCP 47, e.g. en, ja, de, th).
+    llm_description: BCP 47 code of the user's language; results are translated into it.
+extra:
+  python:
+    source: tools/web_search.py

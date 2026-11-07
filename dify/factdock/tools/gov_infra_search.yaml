@@ -1,0 +1,59 @@
+identity:
+  name: gov_infra_search
+  author: factdock
+  label:
+    en_US: Government and infrastructure projects
+description:
+  human:
+    en_US: Public infrastructure plans, tenders and projects in a country (optionally one city), with project phase and sources. Uses API credits.
+  llm: Finds public infrastructure plans, tenders and projects in one country (optionally a city) for the given sectors, with project phase and sources. The country must come from the user.
+parameters:
+  - name: country
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country (English name)
+    human_description:
+      en_US: Country in English (e.g. Vietnam).
+    llm_description: Country name in English.
+  - name: country_code
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Country code
+    human_description:
+      en_US: ISO 3166-1 alpha-2 code (e.g. VN).
+    llm_description: ISO 3166-1 alpha-2 code of the country.
+  - name: sectors
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Sectors
+    human_description:
+      en_US: Comma-separated sectors, e.g. railway, water, energy.
+    llm_description: Comma-separated sectors such as railway, water, energy.
+  - name: city
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: City
+    human_description:
+      en_US: Optional city.
+    llm_description: Optional city name.
+  - name: lang
+    type: string
+    required: false
+    default: en
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Language for the results (BCP 47).
+    llm_description: BCP 47 code of the user's language.
+extra:
+  python:
+    source: tools/gov_infra_search.py
