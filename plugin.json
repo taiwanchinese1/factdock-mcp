@@ -1,0 +1,18 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "factdock",
+  "displayName": "Factdock",
+  "version": "1.0.0",
+  "description": "Multilingual search engine for primary sources: official sites, academic papers, patents, company registries and medicine databases worldwide, searched in each country's own language and returned with source URLs.",
+  "logo": "assets/logo.png",
+  "author": {
+    "name": "Factdock (Apia Business Affairs Co., Ltd.)",
+    "email": "info@fact-dock.com",
+    "url": "https://fact-dock.com"
+  },
+  "suggestedPrompts": [
+    "Search Japanese official sources for the current rules on drone flights over cities, results in English",
+    "Find recent peer-reviewed papers on microplastics in drinking water",
+    "List patents on solid-state battery electrolytes published by the Japan Patent Office"
+  ]
+}

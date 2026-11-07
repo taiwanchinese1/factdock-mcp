@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "factdock": {
+      "url": "https://fact-dock.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${FACTDOCK_API_KEY}"
+      },
+      "variables": [
+        {
+          "name": "FACTDOCK_API_KEY",
+          "title": "Factdock personal API key",
+          "description": "Create a personal API key on the API page of your Factdock account. It starts with fdu_.",
+          "link": "https://fact-dock.com/api-hub"
+        }
+      ]
+    }
+  }
+}
