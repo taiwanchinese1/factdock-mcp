@@ -1,6 +1,6 @@
 {
   "name": "factdock",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Multilingual search engine for primary sources: official sites, academic papers, patents, company registries and medicine databases worldwide, searched in each country's own language and returned with source URLs.",
   "mcpServers": {
     "factdock": {

@@ -26,7 +26,7 @@ Every result includes its source URL. An empty result means "not found or not co
 
 1. Create a Factdock Business API key on the Factdock for Developers page: https://fact-dock.com/en/product/business-api/
    - The search tools need a **Platform** key. An **Insights** key works with Insights news search.
-2. In Dify, install the Factdock plugin, open **Tools 竊・Factdock 竊・Authorize**, and paste the key.
+2. In Dify, install the Factdock plugin, open **Tools > Factdock > API key authorization**, and paste the key.
 3. Add the tools to your agent or workflow.
 
 Checking the key only lists the available tools and does not use credits.
