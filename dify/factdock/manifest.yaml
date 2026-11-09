@@ -15,8 +15,14 @@ resource:
 plugins:
   tools:
     - provider/factdock.yaml
+repo: https://github.com/taiwanchinese1/factdock-mcp
+contact: info@fact-dock.com
+network:
+  domains:
+    - data.fact-dock.com
 meta:
   version: 0.0.1
+  minimum_dify_version: 1.6.0
   arch:
     - amd64
     - arm64

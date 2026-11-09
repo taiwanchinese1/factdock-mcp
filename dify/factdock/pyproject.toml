@@ -5,6 +5,6 @@ description = "Factdock primary-source search tools for Dify"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "dify_plugin>=0.10.2",
-    "requests>=2.32.3",
+    "dify_plugin>=0.10.2,<0.12.0",
+    "requests>=2.32.3,<3.0.0",
 ]
