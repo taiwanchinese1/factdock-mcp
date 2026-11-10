@@ -1,0 +1,31 @@
+identity:
+  author: factdock
+  name: factdock_medical
+  label:
+    en_US: Factdock Medical DB
+  description:
+    en_US: "Official medicine databases for human and veterinary drugs: approved products, labels, adverse-event report counts and literature, returned as original records with source URLs. For professionals; not medical advice."
+  icon: icon.png
+  tags:
+    - medical
+    - search
+    - business
+credentials_for_provider:
+  factdock_api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: Factdock Medical DB API key
+    placeholder:
+      en_US: Paste your Factdock Medical DB API key
+    help:
+      en_US: Create a Medical DB API key on the Factdock for Developers page.
+    url: https://fact-dock.com/en/product/medical-db-api/
+tools:
+  - tools/drug_search.yaml
+  - tools/drug_detail.yaml
+  - tools/adverse_event_counts.yaml
+  - tools/literature_search.yaml
+extra:
+  python:
+    source: provider/factdock_medical.py

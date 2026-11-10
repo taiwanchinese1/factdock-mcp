@@ -1,0 +1,68 @@
+identity:
+  name: insights_search
+  author: factdock
+  label:
+    en_US: Search Insights news
+description:
+  human:
+    en_US: Keyword search over Factdock Insights - official and industry news from primary sources, with titles and summaries in the original language or your language. Uses API credits.
+  llm: Searches Factdock Insights, an archive of official and industry news from primary sources, by keywords with optional country, category and date filters. Returns titles and summaries in the original or requested language with the original source URL and date.
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Keywords
+    human_description:
+      en_US: Search words in any language.
+    llm_description: Search keywords in any language.
+  - name: country
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Country code
+    human_description:
+      en_US: Optional ISO 3166-1 alpha-2 code, e.g. DE or BR.
+    llm_description: Optional ISO 3166-1 alpha-2 country code. Leave empty for all countries.
+  - name: category
+    type: string
+    required: false
+    form: form
+    label:
+      en_US: Category
+    human_description:
+      en_US: 'Optional category, e.g. medical, veterinary, food, science, cyber, energy, ip, trade, economy, approvals, safety.'
+  - name: since
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Since (date)
+    human_description:
+      en_US: Optional start date, YYYY-MM-DD.
+    llm_description: Optional start date in YYYY-MM-DD format.
+  - name: lang
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Result language
+    human_description:
+      en_US: Optional language for titles and summaries (BCP 47), e.g. en, es, pt-BR, id. Must be a language in your contract. Leave empty for the original text.
+    llm_description: Optional BCP 47 code of the user's language. Leave empty to get the original text.
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Number of results
+    human_description:
+      en_US: 1 to 20.
+extra:
+  python:
+    source: tools/insights_search.py

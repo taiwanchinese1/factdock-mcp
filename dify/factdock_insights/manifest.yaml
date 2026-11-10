@@ -1,0 +1,38 @@
+version: 0.0.1
+type: plugin
+author: factdock
+name: factdock_insights
+label:
+  en_US: Factdock Insights
+description:
+  en_US: "Official and industry news from primary sources in many countries, with titles and summaries in your language and the original source URL for every item."
+icon: icon.png
+resource:
+  memory: 1048576
+  permission:
+    tool:
+      enabled: true
+plugins:
+  tools:
+    - provider/factdock_insights.yaml
+repo: https://github.com/taiwanchinese1/factdock-mcp
+contact: info@fact-dock.com
+network:
+  domains:
+    - data.fact-dock.com
+meta:
+  version: 0.0.1
+  minimum_dify_version: 1.6.0
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+created_at: "2026-11-10T00:00:00.000000000Z"
+privacy: PRIVACY.md
+tags:
+  - news
+  - search
+  - business

@@ -102,6 +102,11 @@ Settings → Extensions → Add custom extension → Remote extension (Streamabl
 
 A Dify tool plugin is in [dify/factdock](dify/factdock). It connects to the Factdock Business API (`https://data.fact-dock.com`) with a Business API key and offers country web search, academic, patent, company, trade, infrastructure, finance and Insights tools.
 
+Two more Dify plugins use the product-specific keys:
+
+- [dify/factdock_insights](dify/factdock_insights): Insights news search and latest news, with an Insights API key.
+- [dify/factdock_medical](dify/factdock_medical): approved human and veterinary drugs, drug records, FDA adverse event report counts and medical literature, with a Medical DB API key. For professionals; not medical advice.
+
 ### Other MCP clients
 
 Any client that supports remote MCP servers over Streamable HTTP can use `https://fact-dock.com/mcp` with OAuth sign-in or a personal API key header.

@@ -1,0 +1,117 @@
+identity:
+  name: adverse_event_counts
+  author: factdock
+  label:
+    en_US: Adverse event report counts
+description:
+  human:
+    en_US: "Counts of reported adverse events for an active ingredient from public U.S. FDA reporting systems (FAERS for humans, CVM for animals). Uses API credits. Results are official records for professionals to check, not medical or veterinary advice."
+  llm: "Returns counts of reported adverse events (reaction terms and numbers of reports) for one active ingredient from public FDA databases: FAERS (human) and FDA CVM (veterinary). Report counts do not show that a drug caused an event. Reference data, not medical advice."
+parameters:
+  - name: ingredient
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Active ingredient
+    human_description:
+      en_US: Active ingredient in English, e.g. carprofen.
+    llm_description: Active ingredient name in English (generic name).
+
+  - name: species
+    type: select
+    required: false
+    form: llm
+    label:
+      en_US: Animal species
+    human_description:
+      en_US: Optional animal species.
+    llm_description: Optional animal species, only for veterinary questions.
+    options:
+      - value: dog
+        label:
+          en_US: Dog
+      - value: cat
+        label:
+          en_US: Cat
+      - value: rabbit
+        label:
+          en_US: Rabbit
+      - value: cattle
+        label:
+          en_US: Cattle
+      - value: pig
+        label:
+          en_US: Pig
+      - value: horse
+        label:
+          en_US: Horse
+      - value: chicken
+        label:
+          en_US: Chicken
+      - value: sheep
+        label:
+          en_US: Sheep
+      - value: goat
+        label:
+          en_US: Goat
+      - value: ferret
+        label:
+          en_US: Ferret
+      - value: bird
+        label:
+          en_US: Bird
+      - value: fish
+        label:
+          en_US: Fish
+
+  - name: source
+    type: select
+    required: false
+    form: llm
+    label:
+      en_US: Source
+    human_description:
+      en_US: Optional. FAERS (human) or FDA CVM (veterinary).
+    llm_description: Optional. faers for human reports, fda-cvm for veterinary reports.
+    options:
+      - value: faers
+        label:
+          en_US: FAERS (human)
+      - value: fda-cvm
+        label:
+          en_US: FDA CVM (veterinary)
+
+  - name: year_from
+    type: number
+    required: false
+    form: llm
+    label:
+      en_US: From year
+    human_description:
+      en_US: Optional first year.
+    llm_description: Optional first year, e.g. 2015.
+  - name: year_to
+    type: number
+    required: false
+    form: llm
+    label:
+      en_US: To year
+    human_description:
+      en_US: Optional last year.
+    llm_description: Optional last year.
+
+  - name: limit
+    type: number
+    required: false
+    default: 25
+    min: 1
+    max: 50
+    form: form
+    label:
+      en_US: Number of results
+    human_description:
+      en_US: 1 to 50.
+extra:
+  python:
+    source: tools/adverse_event_counts.py

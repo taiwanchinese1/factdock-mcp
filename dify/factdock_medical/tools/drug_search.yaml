@@ -1,0 +1,106 @@
+identity:
+  name: drug_search
+  author: factdock
+  label:
+    en_US: Search approved drugs
+description:
+  human:
+    en_US: "Search official human and veterinary drug databases by product name, generic name or active ingredient, in any language. Uses API credits. Results are official records for professionals to check, not medical or veterinary advice."
+  llm: "Searches official human and veterinary medicine databases by product name, generic name or active ingredient (any language). Returns approved products with country, authority, ids and source URLs. Use the id with drug_detail for the full record. Results are reference records, not medical advice."
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Drug name or ingredient
+    human_description:
+      en_US: Product name, generic name or active ingredient, in any language.
+    llm_description: Product name, generic name or active ingredient (at least 2 characters).
+  - name: target
+    type: select
+    required: false
+    form: llm
+    label:
+      en_US: Human or animal
+    human_description:
+      en_US: Optional. Human medicines or veterinary medicines.
+    llm_description: Optional. human for human medicines, animal for veterinary medicines.
+    options:
+      - value: human
+        label:
+          en_US: Human
+      - value: animal
+        label:
+          en_US: Animal
+  - name: country
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Country code
+    human_description:
+      en_US: Optional ISO 3166-1 alpha-2 code of the approving country.
+    llm_description: Optional ISO 3166-1 alpha-2 code of the approving country.
+
+  - name: species
+    type: select
+    required: false
+    form: llm
+    label:
+      en_US: Animal species
+    human_description:
+      en_US: Optional animal species.
+    llm_description: Optional animal species, only for veterinary questions.
+    options:
+      - value: dog
+        label:
+          en_US: Dog
+      - value: cat
+        label:
+          en_US: Cat
+      - value: rabbit
+        label:
+          en_US: Rabbit
+      - value: cattle
+        label:
+          en_US: Cattle
+      - value: pig
+        label:
+          en_US: Pig
+      - value: horse
+        label:
+          en_US: Horse
+      - value: chicken
+        label:
+          en_US: Chicken
+      - value: sheep
+        label:
+          en_US: Sheep
+      - value: goat
+        label:
+          en_US: Goat
+      - value: ferret
+        label:
+          en_US: Ferret
+      - value: bird
+        label:
+          en_US: Bird
+      - value: fish
+        label:
+          en_US: Fish
+
+  - name: limit
+    type: number
+    required: false
+    default: 10
+    min: 1
+    max: 20
+    form: form
+    label:
+      en_US: Number of results
+    human_description:
+      en_US: 1 to 20.
+extra:
+  python:
+    source: tools/drug_search.py

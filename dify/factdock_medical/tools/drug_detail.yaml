@@ -1,0 +1,22 @@
+identity:
+  name: drug_detail
+  author: factdock
+  label:
+    en_US: Get drug record
+description:
+  human:
+    en_US: "The full official record for one drug found with Search approved drugs (label sections, ingredients, authority and source URL). Uses API credits. Results are official records for professionals to check, not medical or veterinary advice."
+  llm: "Returns the full official record for one drug id from drug_search: label sections, ingredients, approving authority and source URL, in the original language. Reference record, not medical advice."
+parameters:
+  - name: drug_id
+    type: number
+    required: true
+    form: llm
+    label:
+      en_US: Drug id
+    human_description:
+      en_US: The id from Search approved drugs.
+    llm_description: The numeric id returned by drug_search.
+extra:
+  python:
+    source: tools/drug_detail.py

@@ -1,0 +1,10 @@
+[project]
+name = "factdock_insights"
+version = "0.0.1"
+description = "Factdock Insights news search for Dify"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dify_plugin>=0.10.2,<0.12.0",
+    "requests>=2.32.3,<3.0.0",
+]

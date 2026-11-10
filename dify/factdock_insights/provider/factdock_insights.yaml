@@ -1,0 +1,29 @@
+identity:
+  author: factdock
+  name: factdock_insights
+  label:
+    en_US: Factdock Insights
+  description:
+    en_US: "Official and industry news from primary sources in many countries, with titles and summaries in your language and the original source URL for every item."
+  icon: icon.png
+  tags:
+    - news
+    - search
+    - business
+credentials_for_provider:
+  factdock_api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: Factdock Insights API key
+    placeholder:
+      en_US: Paste your Factdock Insights API key
+    help:
+      en_US: Create an Insights API key on the Factdock for Developers page.
+    url: https://fact-dock.com/en/product/insights-api/
+tools:
+  - tools/insights_search.yaml
+  - tools/insights_latest.yaml
+extra:
+  python:
+    source: provider/factdock_insights.py
