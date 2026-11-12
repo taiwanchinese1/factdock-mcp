@@ -27,6 +27,7 @@ Factdock is a multilingual search engine for primary sources. It searches the we
 | Infectious disease map | `epidemic_diseases`, `epidemic_risk` |
 | Global Insights news feed | `insights_feed`, `insights_videos` |
 | Prices | `get_prices` (free) |
+| Receive a result that did not arrive | `get_pending_result` (free) |
 
 The full tool list with descriptions is published at <https://fact-dock.com/.well-known/mcp/server-card.json>.
 
